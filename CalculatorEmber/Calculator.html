@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Calculator.css" />
+</head>
+
+<body>
+    <script type="text/x-handlebars" data-template-name="application">
+        <header>
+            <h1>Calculator</h1>
+        </header>
+        <div>{{outlet}}</div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="index">
+        {{partial 'calculator'}}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="_calculator">
+        <div class="calculator">
+            {{render "display" model.display}} 
+            {{render "numberBtns" model.numberBtn}} 
+            {{render "operatorBtns" model.operatorBtn}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="display">
+        <div>
+            {{#each item in model}}
+            <div class="display-box">
+                <div class="display">{{item.inputText}}</div>
+                <div class="input">{{item.resultText}}</div>
+            </div>
+            {{/each}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="numberBtns">
+        <div>
+            {{#each item in model}}
+            <button {{bind-attr class="item.type" }}>{{item.value}}</button>
+            {{/each}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="operatorBtns">
+        <div>
+            {{#each item in model}}
+            <button {{bind-attr class="item.type" }}>{{item.value}}</button>
+            {{/each}}
+        </div>
+    </script>
+
+    <script type="text/javascript" src="libs/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="libs/ember-template-compiler.js"></script>
+    <script type="text/javascript" src="libs/ember.debug.js"></script>
+    <script type="text/javascript" src="libs/ember-data.js"></script>
+    <script type="text/javascript" src="Calculator.js"></script>
+    <script type="text/javascript" src="models/NumberBtnModel.js"></script>
+    <script type="text/javascript" src="models/OperatorBtnModel.js"></script>
+    <script type="text/javascript" src="models/DisplayModel.js"></script>
+    <script type="text/javascript" src="views/NumberBtnView.js"></script>
+    <script type="text/javascript" src="views/OperatorBtnView.js"></script>
+    <script type="text/javascript" src="views/DisplayView.js"></script>
+    <script type="text/javascript" src="controllers/NumberBtnController.js"></script>
+    <script type="text/javascript" src="controllers/OperatorBtnController.js"></script>
+    <script type="text/javascript" src="controllers/DisplayController.js"></script>
+    <script type="text/javascript" src="controllers/PCBController.js"></script>
+</body>
+
+</html>
